@@ -7,11 +7,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using WeMoApp.Views;
 
 namespace WeMoApp.ViewModels
 {
     class ViewModelLocator
     {
+        public const string NetworkSelectPageKey = "NetworkSelect";
         /// <summary>
         /// Initializes a new instance of the ViewModelLocator class.
         /// </summary>
@@ -27,9 +29,13 @@ namespace WeMoApp.ViewModels
                 // Create run time view services and models
             }
 
+            var nav = new NavigationService();
+            nav.Configure(NetworkSelectPageKey, typeof(NetworkSelectPage));
+
             //Register your services used here
-            SimpleIoc.Default.Register<INavigationService, NavigationService>();
+            SimpleIoc.Default.Register<INavigationService>(() => nav);
             SimpleIoc.Default.Register<StartPageViewModel>();
+            SimpleIoc.Default.Register<NetworkSelectPageViewModel>();
 
         }
 
@@ -45,6 +51,20 @@ namespace WeMoApp.ViewModels
             get
             {
                 return ServiceLocator.Current.GetInstance<StartPageViewModel>();
+            }
+        }
+
+        // <summary>
+        // Gets the NetworkSelectPage view model.
+        // </summary>
+        // <value>
+        // The NetworkSelectPage view model.
+        // </value>
+        public NetworkSelectPageViewModel NetworkSelectPageInstance
+        {
+            get
+            {
+                return ServiceLocator.Current.GetInstance<NetworkSelectPageViewModel>();
             }
         }
 

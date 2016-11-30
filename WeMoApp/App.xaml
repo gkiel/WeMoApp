@@ -7,5 +7,6 @@
     RequestedTheme="Light">
     <Application.Resources>
         <vm:ViewModelLocator xmlns:vm="using:WeMoApp.ViewModels" x:Key="Locator" />
+        <vm:ItemClickEventArgsConverter xmlns="using:WeMoApp.ViewModels" x:Key="ItemClickEventArgsConverter" />
     </Application.Resources>
 </Application>

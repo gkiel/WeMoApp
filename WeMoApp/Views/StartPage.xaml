@@ -5,11 +5,18 @@
     xmlns:local="using:WeMoApp.Views"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:core="using:Microsoft.Xaml.Interactions.Core"
+    xmlns:interactivity="using:Microsoft.Xaml.Interactivity"
     DataContext="{Binding StartPageInstance, Source={StaticResource Locator}}"
     mc:Ignorable="d">
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <ListView ItemsSource="{Binding Path=Devices}">
+        <ListView ItemsSource="{Binding Path=Devices}" IsItemClickEnabled="True">
+            <interactivity:Interaction.Behaviors>
+                <core:EventTriggerBehavior EventName="ItemClick">
+                    <core:InvokeCommandAction Command="{Binding NavigateCommand}" InputConverter="{StaticResource ItemClickEventArgsConverter}"/>
+                </core:EventTriggerBehavior>
+            </interactivity:Interaction.Behaviors>
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <StackPanel>

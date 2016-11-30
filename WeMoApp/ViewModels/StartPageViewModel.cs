@@ -1,4 +1,6 @@
 ﻿using GalaSoft.MvvmLight;
+using GalaSoft.MvvmLight.Command;
+using GalaSoft.MvvmLight.Views;
 using Rssdp;
 using System;
 using System.Collections.Generic;
@@ -50,11 +52,24 @@ namespace WeMoApp.ViewModels
             set { Set(ref _devices, value); }
         }
 
-        public StartPageViewModel()
+        public RelayCommand<SsdpDevice> NavigateCommand { get; private set; }
+
+        private readonly INavigationService _navigationService;
+
+        public StartPageViewModel(INavigationService navigationService)
         {
+            _navigationService = navigationService;
             Title = "Hello Joel";
+            NavigateCommand = new RelayCommand<SsdpDevice>(NavigateCommandAction);
             Devices = new ObservableCollection<SsdpDevice>();
             SearchForDevices();
+        }
+
+        private void NavigateCommandAction(SsdpDevice device)
+        {
+            if (device == null) return;
+
+            _navigationService.NavigateTo(ViewModelLocator.NetworkSelectPageKey, device);
         }
 
         public async void SearchForDevices()
