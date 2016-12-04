@@ -4,9 +4,10 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:WeMoApp"
     xmlns:vm="using:WeMoApp.ViewModels"
-    RequestedTheme="Light">
+    RequestedTheme="Dark">
     <Application.Resources>
         <vm:ViewModelLocator xmlns:vm="using:WeMoApp.ViewModels" x:Key="Locator" />
-        <vm:ItemClickEventArgsConverter xmlns="using:WeMoApp.ViewModels" x:Key="ItemClickEventArgsConverter" />
+        <vm:SsdpDeviceClickEventArgsConverter xmlns="using:WeMoApp.ViewModels" x:Key="SsdpDeviceClickEventArgsConverter" />
+        <vm:ApClickEventArgsConverter xmlns="using:WeMoApp.ViewModels" x:Key="ApClickEventArgsConverter" />
     </Application.Resources>
 </Application>

@@ -9,16 +9,16 @@ using Windows.UI.Xaml.Data;
 
 namespace WeMoApp.ViewModels
 {
-   public sealed class ItemClickEventArgsConverter : IValueConverter
+    public sealed class SsdpDeviceClickEventArgsConverter : IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, string language)
         {
             var args = value as ItemClickEventArgs;
             if (args == null)
                 throw new ArgumentException("Value is not ItemClickEventArgs");
-            if (args.ClickedItem is SsdpDevice)
+            if (args.ClickedItem is SsdpRootDevice)
             {
-                var selectedItem = args.ClickedItem as SsdpDevice;
+                var selectedItem = args.ClickedItem as SsdpRootDevice;
                 return selectedItem;
             }
             else

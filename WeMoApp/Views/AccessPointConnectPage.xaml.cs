@@ -1,13 +1,8 @@
-﻿using Rssdp;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
-using System.Xml;
-using System.Xml.Serialization;
-using WeMoApp.Models;
-using WeMoApp.Utilities;
 using WeMoApp.ViewModels;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
@@ -18,7 +13,6 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
-using Windows.Web.Http;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -27,9 +21,9 @@ namespace WeMoApp.Views
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
-    public sealed partial class NetworkSelectPage : Page
+    public sealed partial class AccessPointConnectPage : Page
     {
-        public NetworkSelectPage()
+        public AccessPointConnectPage()
         {
             this.InitializeComponent();
         }
@@ -38,7 +32,7 @@ namespace WeMoApp.Views
         {
             base.OnNavigatedTo(e);
 
-            var vm = this.DataContext as NetworkSelectPageViewModel;
+            var vm = this.DataContext as AccessPointConnectPageViewModel;
             vm.Activate(e);
         }
     }

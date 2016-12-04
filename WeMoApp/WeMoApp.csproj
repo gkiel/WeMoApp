@@ -95,11 +95,22 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Models\AccessPoint.cs" />
+    <Compile Include="Models\DeviceSetup.cs" />
+    <Compile Include="Models\GetApList.cs" />
+    <Compile Include="Models\ServiceSetup.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ViewModels\ItemClickEventArgsConverter.cs" />
+    <Compile Include="Utilities\AccessPointParser.cs" />
+    <Compile Include="Utilities\SoapRequestHelper.cs" />
+    <Compile Include="ViewModels\AccessPointConnectPageViewModel.cs" />
+    <Compile Include="ViewModels\ApClickEventArgsConverter.cs" />
+    <Compile Include="ViewModels\SsdpDeviceClickEventArgsConverter.cs" />
     <Compile Include="ViewModels\NetworkSelectPageViewModel.cs" />
     <Compile Include="ViewModels\StartPageViewModel.cs" />
     <Compile Include="ViewModels\ViewModelLocator.cs" />
+    <Compile Include="Views\AccessPointConnectPage.xaml.cs">
+      <DependentUpon>AccessPointConnectPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\NetworkSelectPage.xaml.cs">
       <DependentUpon>NetworkSelectPage.xaml</DependentUpon>
     </Compile>
@@ -128,6 +139,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="Views\AccessPointConnectPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\NetworkSelectPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -137,9 +152,7 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Models\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
   </ItemGroup>

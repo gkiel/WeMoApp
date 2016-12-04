@@ -14,6 +14,7 @@ namespace WeMoApp.ViewModels
     class ViewModelLocator
     {
         public const string NetworkSelectPageKey = "NetworkSelect";
+        public const string AccessPointConnectPageKey = "AccessPoint";
         /// <summary>
         /// Initializes a new instance of the ViewModelLocator class.
         /// </summary>
@@ -31,11 +32,13 @@ namespace WeMoApp.ViewModels
 
             var nav = new NavigationService();
             nav.Configure(NetworkSelectPageKey, typeof(NetworkSelectPage));
+            nav.Configure(AccessPointConnectPageKey, typeof(AccessPointConnectPage));
 
             //Register your services used here
             SimpleIoc.Default.Register<INavigationService>(() => nav);
             SimpleIoc.Default.Register<StartPageViewModel>();
             SimpleIoc.Default.Register<NetworkSelectPageViewModel>();
+            SimpleIoc.Default.Register<AccessPointConnectPageViewModel>();
 
         }
 
@@ -51,6 +54,20 @@ namespace WeMoApp.ViewModels
             get
             {
                 return ServiceLocator.Current.GetInstance<StartPageViewModel>();
+            }
+        }
+
+        // <summary>
+        // Gets the AccessPointConnectPageViewModel view model.
+        // </summary>
+        // <value>
+        // The AccessPointConnectPageViewModel view model.
+        // </value>
+        public AccessPointConnectPageViewModel AccessPointConnectPageInstance
+        {
+            get
+            {
+                return ServiceLocator.Current.GetInstance<AccessPointConnectPageViewModel>();
             }
         }
 

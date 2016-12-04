@@ -1,0 +1,29 @@
+﻿<Page
+    x:Class="WeMoApp.Views.AccessPointConnectPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:WeMoApp.Views"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:core="using:Microsoft.Xaml.Interactions.Core"
+    xmlns:interactivity="using:Microsoft.Xaml.Interactivity"
+    DataContext="{Binding AccessPointConnectPageInstance, Source={StaticResource Locator}}"
+    mc:Ignorable="d">
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <StackPanel>
+            <TextBlock Text="{Binding AccessPoint.Ssid}"/>
+            <TextBox Text="{Binding Password, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+            <Button Content="Connect">
+                <interactivity:Interaction.Behaviors>
+                    <core:EventTriggerBehavior EventName="Click">
+                        <core:InvokeCommandAction Command="{Binding ConnectCommand}"/>
+                    </core:EventTriggerBehavior>
+                </interactivity:Interaction.Behaviors>
+            </Button>
+            <TextBlock Text="{Binding Error}" TextWrapping="Wrap"/>
+            <TextBlock Text="{Binding Status}" TextWrapping="Wrap"/>
+            <TextBlock Text="{Binding ConfigureState}" TextWrapping="Wrap"/>
+        </StackPanel>
+    </Grid>
+</Page>
